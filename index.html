@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AURA Auto Details | Premium Mobile Detailing</title>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -26,6 +32,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -33,15 +40,25 @@ body {
     background: var(--black);
     color: white;
     overflow-x: hidden;
+    width: 100%;
 }
 
-/* =========================
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
 nav {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
 
@@ -117,15 +134,138 @@ nav {
     font-weight: 900;
 }
 
-/* =========================
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
+
+.menu-toggle {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 8px;
+
+    background: rgba(255,255,255,.03);
+
+    cursor: pointer;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.menu-toggle span {
+    display: block;
+
+    width: 20px;
+    height: 2px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    transition: .25s;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+.mobile-menu {
+    display: none;
+
+    position: fixed;
+
+    top: 65px;
+    left: 0;
+
+    width: 100%;
+
+    background: rgba(3,4,5,.97);
+
+    backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid rgba(0,140,255,.25);
+
+    padding: 10px 16px 18px;
+
+    z-index: 999;
+}
+
+.mobile-menu.open {
+    display: block;
+}
+
+.mobile-menu a {
+    display: block;
+
+    padding: 15px 10px;
+
+    color: #ddd;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu a:hover {
+    color: var(--blue);
+}
+
+.mobile-menu .mobile-book {
+    margin-top: 10px;
+
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        #159cff,
+        #006fe6
+    );
+
+    border-radius: 8px;
+
+    color: white;
+}
+
+
+/* =========================================================
    TOP HERO GLOW
    BMW CAN BE ADDED HERE LATER
-========================= */
+========================================================= */
 
 .top-space {
     height: 67px;
 
     position: relative;
+
     overflow: hidden;
 
     background:
@@ -135,7 +275,8 @@ nav {
             transparent 65%
         );
 
-    border-bottom: 1px solid rgba(0,140,255,.15);
+    border-bottom:
+        1px solid rgba(0,140,255,.15);
 }
 
 .top-space::after {
@@ -161,9 +302,29 @@ nav {
         0 0 18px rgba(0,140,255,.7);
 }
 
-/* =========================
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.container {
+    width: 100%;
+    max-width: 1250px;
+
+    margin: auto;
+
+    position: relative;
+    z-index: 2;
+}
+
+section {
+    padding: 90px 25px;
+}
+
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
     min-height: 610px;
@@ -210,16 +371,6 @@ nav {
 
     box-shadow:
         0 0 100px rgba(0,140,255,.05);
-}
-
-.container {
-    width: 100%;
-    max-width: 1250px;
-
-    margin: auto;
-
-    position: relative;
-    z-index: 2;
 }
 
 .hero-content {
@@ -360,13 +511,10 @@ nav {
     text-transform: uppercase;
 }
 
-/* =========================
-   SECTIONS
-========================= */
 
-section {
-    padding: 90px 25px;
-}
+/* =========================================================
+   SECTION HEADERS
+========================================================= */
 
 .section-header {
     max-width: 720px;
@@ -394,9 +542,10 @@ section {
     line-height: 1.6;
 }
 
-/* =========================
+
+/* =========================================================
    SERVICES
-========================= */
+========================================================= */
 
 .services {
     background: #05070a;
@@ -529,9 +678,10 @@ section {
     margin-right: 8px;
 }
 
-/* =========================
+
+/* =========================================================
    ADDONS
-========================= */
+========================================================= */
 
 .addons-section {
     background: #080b0f;
@@ -577,9 +727,10 @@ section {
     font-weight: 900;
 }
 
-/* =========================
+
+/* =========================================================
    BOOKING
-========================= */
+========================================================= */
 
 .booking {
     background:
@@ -662,6 +813,11 @@ section {
     color: var(--blue);
 }
 
+
+/* =========================================================
+   BOOKING CARD
+========================================================= */
+
 .booking-card {
     background: #101419;
 
@@ -722,6 +878,11 @@ section {
     margin-bottom: 22px;
 }
 
+
+/* =========================================================
+   PACKAGE SELECTION
+========================================================= */
+
 .package-select {
     display: grid;
 
@@ -778,6 +939,11 @@ section {
 
     margin-top: 4px;
 }
+
+
+/* =========================================================
+   FORM
+========================================================= */
 
 .form-grid {
     display: grid;
@@ -842,6 +1008,8 @@ textarea {
 
     justify-content: space-between;
 
+    gap: 10px;
+
     margin-top: 22px;
 }
 
@@ -882,9 +1050,10 @@ textarea {
     text-align: right;
 }
 
-/* =========================
+
+/* =========================================================
    FAQ
-========================= */
+========================================================= */
 
 .faq {
     max-width: 800px;
@@ -913,9 +1082,10 @@ details p {
     line-height: 1.6;
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
     border-top:
@@ -986,1539 +1156,2207 @@ footer {
     color: var(--blue);
 }
 
-/* =========================
-   MOBILE
-========================= */
 
-@media(max-width:1050px) {
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) {
 
     .packages {
-        grid-template-columns:
-            1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .addons {
-        grid-template-columns:
-            1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .booking-layout {
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .booking-copy {
+        max-width: 750px;
+
+        margin: auto;
     }
 }
 
-@media(max-width:700px) {
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .nav-container {
+        padding: 14px 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .hero {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    section {
+        padding: 75px 22px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+
+    /* MOBILE NAV */
+
+    .nav-container {
+        min-height: 65px;
+
+        padding: 10px 16px;
+    }
+
+    .logo {
+        font-size: 21px;
+
+        letter-spacing: 4px;
+    }
+
+    .logo span {
+        font-size: 7px;
+
+        letter-spacing: 3px;
+    }
 
     .nav-links {
         display: none;
     }
 
-    .top-space {
-        height: 67px;
+    .menu-toggle {
+        display: flex;
     }
 
+
+    /* TOP SPACE */
+
+    .top-space {
+        height: 65px;
+    }
+
+
+    /* GENERAL */
+
+    section {
+        padding: 65px 17px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    /* HERO */
+
     .hero {
-        min-height: 650px;
+        min-height: auto;
 
         padding:
-            70px 20px;
+            75px 18px 65px;
+    }
+
+    .hero::before {
+        width: 280px;
+        height: 280px;
+
+        right: -180px;
+    }
+
+    .eyebrow {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 15px;
     }
 
     .hero h1 {
-        font-size: 55px;
+        font-size:
+            clamp(43px, 13vw, 60px);
 
-        letter-spacing: -3px;
+        line-height: .94;
+
+        letter-spacing: -2.5px;
     }
 
     .hero-description {
-        font-size: 16px;
+        font-size: 15px;
+
+        line-height: 1.55;
+
+        margin-top: 22px;
+
+        margin-bottom: 25px;
     }
+
+
+    /* HERO BUTTONS */
+
+    .buttons {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .buttons .btn {
+        width: 100%;
+
+        min-height: 50px;
+    }
+
+
+    /* STATS */
 
     .stats {
-        gap: 25px;
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 25px 15px;
+
+        margin-top: 35px;
     }
 
-    .packages,
-    .addons,
-    .package-select,
-    .form-grid {
-        grid-template-columns:
-            1fr;
+    .stat strong {
+        font-size: 21px;
+    }
+
+    .stat small {
+        font-size: 8px;
+
+        letter-spacing: .8px;
+    }
+
+
+    /* SECTION HEADER */
+
+    .section-header {
+        margin-bottom: 32px;
+    }
+
+    .section-header h2 {
+        font-size:
+            clamp(34px, 10vw, 48px);
+
+        line-height: .98;
+    }
+
+    .section-header p {
+        font-size: 14px;
+
+        line-height: 1.55;
+    }
+
+
+    /* SERVICES */
+
+    .packages {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .package {
+        width: 100%;
+
+        padding: 24px 20px;
+    }
+
+    .package:hover {
+        transform: none;
+    }
+
+    .package h3 {
+        font-size: 19px;
+    }
+
+    .price {
+        font-size: 39px;
+    }
+
+    .features li {
+        font-size: 12px;
+
+        padding: 8px 0;
+    }
+
+
+    /* ADDONS */
+
+    .addons {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+    }
+
+    .addon {
+        padding: 17px;
+    }
+
+    .addon:hover {
+        transform: none;
+    }
+
+    .addon h4 {
+        font-size: 13px;
+    }
+
+
+    /* BOOKING */
+
+    .booking-layout {
+        display: flex;
+
+        flex-direction: column;
+
+        width: 100%;
+
+        gap: 30px;
+    }
+
+    .booking-copy {
+        width: 100%;
     }
 
     .booking-copy h2 {
-        font-size: 40px;
+        font-size:
+            clamp(35px, 10vw, 45px);
+
+        line-height: .98;
     }
 
+    .booking-copy > p {
+        font-size: 14px;
+    }
+
+    .contact-box {
+        padding: 15px;
+    }
+
+    .contact-box strong {
+        font-size: 14px;
+
+        line-height: 1.5;
+    }
+
+
+    /* BOOKING CARD */
+
     .booking-card {
-        padding: 20px;
+        width: 100%;
+
+        padding: 18px 15px;
+
+        border-radius: 13px;
+    }
+
+    .step-title {
+        font-size: 21px;
+    }
+
+    .step-subtitle {
+        font-size: 12px;
+
+        line-height: 1.4;
+    }
+
+
+    /* BOOKING PACKAGE OPTIONS */
+
+    .package-select {
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+    }
+
+    .package-option {
+        width: 100%;
+
+        min-height: 82px;
+
+        padding: 14px;
+    }
+
+    .package-option b {
+        font-size: 18px;
+    }
+
+
+    /* FORMS */
+
+    .form-grid {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+    .field {
+        margin-bottom: 13px;
+    }
+
+    .field label {
+        font-size: 10px;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+
+        min-height: 46px;
+
+        padding: 12px;
+
+        /*
+           16px prevents iPhone Safari
+           from automatically zooming.
+        */
+
+        font-size: 16px;
+
+        border-radius: 7px;
+    }
+
+    textarea {
+        min-height: 100px;
+    }
+
+
+    /* BOOKING BUTTONS */
+
+    .step-buttons {
+        flex-direction: column-reverse;
+
+        gap: 9px;
+
+        width: 100%;
+
+        margin-top: 20px;
+    }
+
+    .step-buttons span {
+        display: none;
+    }
+
+    .step-buttons .btn {
+        width: 100%;
+
+        min-height: 48px;
+    }
+
+
+    /* SUMMARY */
+
+    .summary {
+        padding: 13px;
+    }
+
+    .summary-row {
+        display: grid;
+
+        grid-template-columns:
+            1fr auto;
+
+        gap: 12px;
+
+        font-size: 12px;
+    }
+
+    .summary-row strong {
+        max-width: 180px;
+
+        overflow-wrap: anywhere;
+    }
+
+
+    /* FAQ */
+
+    .faq {
+        width: 100%;
+    }
+
+    details {
+        padding: 17px 0;
+    }
+
+    summary {
+        font-size: 14px;
+
+        line-height: 1.4;
+    }
+
+    details p {
+        font-size: 13px;
+
+        line-height: 1.55;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding: 35px 18px;
     }
 
     .footer {
+        width: 100%;
+
         flex-direction: column;
+
+        gap: 22px;
 
         text-align: center;
     }
 
     .footer-contact {
         text-align: center;
+
+        font-size: 12px;
+
+        line-height: 1.7;
     }
 }
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .stats {
+        gap: 20px 10px;
+    }
+
+    .stat strong {
+        font-size: 19px;
+    }
+
+    .section-header h2 {
+        font-size: 34px;
+    }
+
+    .booking-card {
+        padding: 15px 12px;
+    }
+}
+
 </style>
 </head>
+
 
 <body>
 
 
-<!-- =========================
+<!-- =======================================================
      NAVIGATION
-========================= -->
+======================================================= -->
 
 <nav>
 
-<div class="nav-container">
+    <div class="nav-container">
 
-<a href="#home" class="logo">
-AURA
-<span>AUTO DETAILS</span>
-</a>
+        <a href="#home" class="logo">
+            AURA
+            <span>AUTO DETAILS</span>
+        </a>
 
-<div class="nav-links">
 
-<a href="#home">Home</a>
+        <!-- DESKTOP NAV -->
 
-<a href="#services">Services</a>
+        <div class="nav-links">
 
-<a href="#addons">Add-ons</a>
+            <a href="#home">
+                Home
+            </a>
 
-<a href="#booking">Booking</a>
+            <a href="#services">
+                Services
+            </a>
 
-<a href="#faq">FAQ</a>
+            <a href="#addons">
+                Add-ons
+            </a>
 
-<a href="#booking" class="book-button">
-Book Now
-</a>
+            <a href="#booking">
+                Booking
+            </a>
 
-</div>
+            <a href="#faq">
+                FAQ
+            </a>
 
-</div>
+            <a href="#booking" class="book-button">
+                Book Now
+            </a>
+
+        </div>
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </div>
 
 </nav>
 
 
-<!-- =========================
-     CLEAN TOP AREA
-     BMW WILL BE ADDED LATER
-========================= -->
+<!-- =======================================================
+     MOBILE MENU
+======================================================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <a href="#home">
+        Home
+    </a>
+
+    <a href="#services">
+        Services
+    </a>
+
+    <a href="#addons">
+        Add-ons
+    </a>
+
+    <a href="#booking">
+        Booking
+    </a>
+
+    <a href="#faq">
+        FAQ
+    </a>
+
+    <a
+        href="#booking"
+        class="mobile-book"
+    >
+        Book Your Detail
+    </a>
+
+</div>
+
+
+<!-- =======================================================
+     TOP SPACE
+     BMW CAN BE ADDED HERE LATER
+======================================================= -->
 
 <div class="top-space"></div>
 
 
-<!-- =========================
+<!-- =======================================================
      HERO
-========================= -->
+======================================================= -->
 
-<section class="hero" id="home">
-
-<div class="container">
-
-<div class="hero-content">
-
-<div class="eyebrow">
-Premium Mobile Auto Detailing
-</div>
-
-<h1>
-DETAILING THAT
-<span>HITS</span>
-DIFFERENT.
-</h1>
-
-<p class="hero-description">
-
-Professional interior and exterior detailing
-brought directly to you.
-
-Premium results. Attention to detail.
-A vehicle that feels completely refreshed.
-
-</p>
-
-<div class="buttons">
-
-<a
-href="#booking"
-class="btn primary"
+<section
+    class="hero"
+    id="home"
 >
-Book Your Detail →
-</a>
 
-<a
-href="tel:4703343089"
-class="btn outline"
->
-☎ Call / Text 470-334-3089
-</a>
+    <div class="container">
 
-</div>
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                Premium Mobile Auto Detailing
+            </div>
 
 
-<div class="stats">
-
-<div class="stat">
-
-<strong>$95+</strong>
-
-<small>
-Starting Price
-</small>
-
-</div>
+            <h1>
+                DETAILING THAT
+                <span>HITS</span>
+                DIFFERENT.
+            </h1>
 
 
-<div class="stat">
+            <p class="hero-description">
 
-<strong>Mobile</strong>
+                Professional interior and exterior detailing
+                brought directly to you.
 
-<small>
-We Come To You
-</small>
+                Premium results. Attention to detail.
+                A vehicle that feels completely refreshed.
 
-</div>
-
-
-<div class="stat">
-
-<strong>Premium</strong>
-
-<small>
-Attention To Detail
-</small>
-
-</div>
+            </p>
 
 
-<div class="stat">
+            <div class="buttons">
 
-<strong>4</strong>
+                <a
+                    href="#booking"
+                    class="btn primary"
+                >
+                    Book Your Detail →
+                </a>
 
-<small>
-Service Packages
-</small>
 
-</div>
+                <a
+                    href="tel:4703343089"
+                    class="btn outline"
+                >
+                    ☎ Call / Text 470-334-3089
+                </a>
 
-</div>
+            </div>
 
-</div>
 
-</div>
+            <div class="stats">
+
+
+                <div class="stat">
+
+                    <strong>
+                        $95+
+                    </strong>
+
+                    <small>
+                        Starting Price
+                    </small>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        Mobile
+                    </strong>
+
+                    <small>
+                        We Come To You
+                    </small>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        Premium
+                    </strong>
+
+                    <small>
+                        Attention To Detail
+                    </small>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        4
+                    </strong>
+
+                    <small>
+                        Service Packages
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      SERVICES
-========================= -->
+======================================================= -->
 
 <section
-class="services"
-id="services"
+    class="services"
+    id="services"
 >
 
-<div class="container">
-
-<div class="section-header">
-
-<div class="eyebrow">
-Our Services
-</div>
-
-<h2>
-CHOOSE YOUR
-<span>DETAIL.</span>
-</h2>
-
-<p>
-Every vehicle is different. Choose the service
-that fits your vehicle and the result you're looking for.
-</p>
-
-</div>
+    <div class="container">
 
 
-<div class="packages">
+        <div class="section-header">
+
+            <div class="eyebrow">
+                Our Services
+            </div>
+
+            <h2>
+                CHOOSE YOUR
+                <span>DETAIL.</span>
+            </h2>
+
+            <p>
+                Every vehicle is different. Choose the service
+                that fits your vehicle and the result you're looking for.
+            </p>
+
+        </div>
 
 
-<div class="package">
-
-<div class="package-icon">
-🚘
-</div>
-
-<h3>
-Express
-<span>Exterior</span>
-</h3>
-
-<div class="starting">
-Starting at
-</div>
-
-<div class="price">
-$95
-</div>
-
-<ul class="features">
-
-<li>Hand wash</li>
-<li>Wheels & tires</li>
-<li>Wheel wells</li>
-<li>Bug / tar removal</li>
-<li>Exterior windows</li>
-<li>Tire dressing</li>
-<li>Spray sealant</li>
-<li>Final wipe-down</li>
-
-</ul>
-
-</div>
+        <div class="packages">
 
 
-<div class="package">
+            <!-- EXPRESS -->
 
-<div class="package-icon">
-🧼
-</div>
+            <div class="package">
 
-<h3>
-Full
-<span>Interior</span>
-</h3>
+                <div class="package-icon">
+                    🚘
+                </div>
 
-<div class="starting">
-Starting at
-</div>
+                <h3>
+                    Express
+                    <span>Exterior</span>
+                </h3>
 
-<div class="price">
-$125
-</div>
+                <div class="starting">
+                    Starting at
+                </div>
 
-<ul class="features">
+                <div class="price">
+                    $95
+                </div>
 
-<li>Full vacuum</li>
-<li>Dash & console cleaning</li>
-<li>Door panels</li>
-<li>Cupholders & crevices</li>
-<li>Interior windows</li>
-<li>Mats cleaned</li>
-<li>Light stain treatment</li>
-<li>UV protectant</li>
+                <ul class="features">
 
-</ul>
+                    <li>Hand wash</li>
+                    <li>Wheels & tires</li>
+                    <li>Wheel wells</li>
+                    <li>Bug / tar removal</li>
+                    <li>Exterior windows</li>
+                    <li>Tire dressing</li>
+                    <li>Spray sealant</li>
+                    <li>Final wipe-down</li>
 
-</div>
+                </ul>
 
-
-<div class="package popular">
-
-<div class="popular-label">
-MOST POPULAR
-</div>
-
-<div class="package-icon">
-👑
-</div>
-
-<h3>
-Full
-<span>Detail</span>
-</h3>
-
-<div class="starting">
-Starting at
-</div>
-
-<div class="price">
-$195
-</div>
-
-<ul class="features">
-
-<li>Everything in Express Exterior</li>
-<li>Everything in Full Interior</li>
-<li>Deeper interior cleaning</li>
-<li>Carpet / mat shampoo</li>
-<li>Seat cleaning</li>
-<li>Detailed crevice cleaning</li>
-<li>Longer-lasting protection</li>
-
-</ul>
-
-</div>
+            </div>
 
 
-<div class="package gold">
+            <!-- INTERIOR -->
 
-<div class="package-icon">
-💎
-</div>
+            <div class="package">
 
-<h3>
-Premium
-<span>Detail</span>
-</h3>
+                <div class="package-icon">
+                    🧼
+                </div>
 
-<div class="starting">
-Starting at
-</div>
+                <h3>
+                    Full
+                    <span>Interior</span>
+                </h3>
 
-<div class="price">
-$275
-</div>
+                <div class="starting">
+                    Starting at
+                </div>
 
-<ul class="features">
+                <div class="price">
+                    $125
+                </div>
 
-<li>Everything in Full Detail</li>
-<li>Deeper stain extraction</li>
-<li>Paint decontamination</li>
-<li>Clay treatment</li>
-<li>Paint sealant</li>
-<li>Trim restoration</li>
-<li>Extra finishing time</li>
+                <ul class="features">
 
-</ul>
+                    <li>Full vacuum</li>
+                    <li>Dash & console cleaning</li>
+                    <li>Door panels</li>
+                    <li>Cupholders & crevices</li>
+                    <li>Interior windows</li>
+                    <li>Mats cleaned</li>
+                    <li>Light stain treatment</li>
+                    <li>UV protectant</li>
 
-</div>
+                </ul>
 
-</div>
+            </div>
 
-</div>
+
+            <!-- FULL DETAIL -->
+
+            <div class="package popular">
+
+                <div class="popular-label">
+                    MOST POPULAR
+                </div>
+
+                <div class="package-icon">
+                    👑
+                </div>
+
+                <h3>
+                    Full
+                    <span>Detail</span>
+                </h3>
+
+                <div class="starting">
+                    Starting at
+                </div>
+
+                <div class="price">
+                    $195
+                </div>
+
+                <ul class="features">
+
+                    <li>Everything in Express Exterior</li>
+                    <li>Everything in Full Interior</li>
+                    <li>Deeper interior cleaning</li>
+                    <li>Carpet / mat shampoo</li>
+                    <li>Seat cleaning</li>
+                    <li>Detailed crevice cleaning</li>
+                    <li>Longer-lasting protection</li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- PREMIUM -->
+
+            <div class="package gold">
+
+                <div class="package-icon">
+                    💎
+                </div>
+
+                <h3>
+                    Premium
+                    <span>Detail</span>
+                </h3>
+
+                <div class="starting">
+                    Starting at
+                </div>
+
+                <div class="price">
+                    $275
+                </div>
+
+                <ul class="features">
+
+                    <li>Everything in Full Detail</li>
+                    <li>Deeper stain extraction</li>
+                    <li>Paint decontamination</li>
+                    <li>Clay treatment</li>
+                    <li>Paint sealant</li>
+                    <li>Trim restoration</li>
+                    <li>Extra finishing time</li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
-     ADDONS
-========================= -->
+<!-- =======================================================
+     ADD-ONS
+======================================================= -->
 
 <section
-class="addons-section"
-id="addons"
+    class="addons-section"
+    id="addons"
 >
 
-<div class="container">
-
-<div class="section-header">
-
-<div class="eyebrow">
-Customize Your Detail
-</div>
-
-<h2>
-Premium
-<span>Add-ons.</span>
-</h2>
-
-<p>
-Take your detail further with additional services.
-</p>
-
-</div>
+    <div class="container">
 
 
-<div class="addons">
+        <div class="section-header">
 
-<div class="addon">
+            <div class="eyebrow">
+                Customize Your Detail
+            </div>
 
-<h4>
-🐾 Pet Hair Removal
-</h4>
+            <h2>
+                Premium
+                <span>Add-ons.</span>
+            </h2>
 
-<p>
-+$30–$60
-</p>
+            <p>
+                Take your detail further with additional services.
+            </p>
 
-</div>
-
-
-<div class="addon">
-
-<h4>
-🧽 Heavy Stain Extraction
-</h4>
-
-<p>
-+$30
-</p>
-
-</div>
+        </div>
 
 
-<div class="addon">
-
-<h4>
-💦 Excessive Dirt / Mud
-</h4>
-
-<p>
-+$25–$50
-</p>
-
-</div>
+        <div class="addons">
 
 
-<div class="addon">
+            <div class="addon">
 
-<h4>
-✨ Spray Wax / Sealant
-</h4>
+                <h4>
+                    🐾 Pet Hair Removal
+                </h4>
 
-<p>
-+$25
-</p>
+                <p>
+                    +$30–$60
+                </p>
 
-</div>
-
-
-<div class="addon">
-
-<h4>
-💡 Headlight Restoration
-</h4>
-
-<p>
-+$50
-</p>
-
-</div>
+            </div>
 
 
-<div class="addon">
+            <div class="addon">
 
-<h4>
-🔧 Engine Bay Cleaning
-</h4>
+                <h4>
+                    🧽 Heavy Stain Extraction
+                </h4>
 
-<p>
-+$40
-</p>
+                <p>
+                    +$30
+                </p>
 
-</div>
-
-
-<div class="addon">
-
-<h4>
-🌬️ Odor Treatment
-</h4>
-
-<p>
-+$30
-</p>
-
-</div>
+            </div>
 
 
-<div class="addon">
+            <div class="addon">
 
-<h4>
-🚙 Large Truck / 3-Row SUV
-</h4>
+                <h4>
+                    💦 Excessive Dirt / Mud
+                </h4>
 
-<p>
-+$25–$50
-</p>
+                <p>
+                    +$25–$50
+                </p>
 
-</div>
+            </div>
 
-</div>
 
-</div>
+            <div class="addon">
+
+                <h4>
+                    ✨ Spray Wax / Sealant
+                </h4>
+
+                <p>
+                    +$25
+                </p>
+
+            </div>
+
+
+            <div class="addon">
+
+                <h4>
+                    💡 Headlight Restoration
+                </h4>
+
+                <p>
+                    +$50
+                </p>
+
+            </div>
+
+
+            <div class="addon">
+
+                <h4>
+                    🔧 Engine Bay Cleaning
+                </h4>
+
+                <p>
+                    +$40
+                </p>
+
+            </div>
+
+
+            <div class="addon">
+
+                <h4>
+                    🌬️ Odor Treatment
+                </h4>
+
+                <p>
+                    +$30
+                </p>
+
+            </div>
+
+
+            <div class="addon">
+
+                <h4>
+                    🚙 Large Truck / 3-Row SUV
+                </h4>
+
+                <p>
+                    +$25–$50
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      BOOKING
-========================= -->
+======================================================= -->
 
 <section
-class="booking"
-id="booking"
+    class="booking"
+    id="booking"
 >
 
-<div class="container">
+    <div class="container">
 
-<div class="booking-layout">
 
+        <div class="booking-layout">
 
-<div class="booking-copy">
 
-<div class="eyebrow">
-Online Booking
-</div>
+            <!-- BOOKING INFORMATION -->
 
-<h2>
-GET YOUR CAR LOOKING
-<span>DIFFERENT.</span>
-</h2>
+            <div class="booking-copy">
 
-<p>
-Choose your service, tell us about your vehicle,
-and request your preferred date.
+                <div class="eyebrow">
+                    Online Booking
+                </div>
 
-We'll contact you to confirm availability
-and final pricing.
-</p>
+                <h2>
+                    GET YOUR CAR LOOKING
+                    <span>DIFFERENT.</span>
+                </h2>
 
+                <p>
 
-<div class="contact-box">
+                    Choose your service, tell us about your vehicle,
+                    and request your preferred date.
 
-<small>
-Call or Text
-</small>
+                    We'll contact you to confirm availability
+                    and final pricing.
 
-<strong>
+                </p>
 
-<a href="tel:4703343089">
-470-334-3089
-</a>
 
-</strong>
+                <div class="contact-box">
 
-</div>
+                    <small>
+                        Call or Text
+                    </small>
 
+                    <strong>
 
-<div class="contact-box">
+                        <a href="tel:4703343089">
+                            470-334-3089
+                        </a>
 
-<small>
-Service Area
-</small>
+                    </strong>
 
-<strong>
-Cartersville • White • Canton • Rome
-</strong>
+                </div>
 
-</div>
 
+                <div class="contact-box">
 
-<div class="contact-box">
+                    <small>
+                        Service Area
+                    </small>
 
-<small>
-Starting Price
-</small>
+                    <strong>
+                        Cartersville • White • Canton • Rome
+                    </strong>
 
-<strong>
-$95+
-</strong>
+                </div>
 
-</div>
 
-</div>
+                <div class="contact-box">
 
+                    <small>
+                        Starting Price
+                    </small>
 
-<!-- BOOKING CARD -->
+                    <strong>
+                        $95+
+                    </strong>
 
-<div class="booking-card">
+                </div>
 
-<div class="progress">
+            </div>
 
-<span class="active"></span>
 
-<span></span>
+            <!-- BOOKING CARD -->
 
-<span></span>
+            <div class="booking-card">
 
-<span></span>
 
-</div>
+                <!-- PROGRESS -->
 
+                <div class="progress">
 
-<!-- STEP 1 -->
+                    <span class="active"></span>
 
-<div
-class="step active"
-id="step1"
->
+                    <span></span>
 
-<div class="step-title">
-Choose Your Detail
-</div>
+                    <span></span>
 
-<div class="step-subtitle">
-Select the package you want.
-</div>
+                    <span></span>
 
+                </div>
 
-<div class="package-select">
 
+                <!-- =================================================
+                     STEP 1
+                ================================================= -->
 
-<button
-class="package-option selected"
-data-name="Express Exterior"
-data-price="95"
->
+                <div
+                    class="step active"
+                    id="step1"
+                >
 
-<strong>
-Express Exterior
-</strong>
+                    <div class="step-title">
+                        Choose Your Detail
+                    </div>
 
-<small>
-Exterior refresh
-</small>
+                    <div class="step-subtitle">
+                        Select the package you want.
+                    </div>
 
-<b>
-$95+
-</b>
 
-</button>
+                    <div class="package-select">
 
 
-<button
-class="package-option"
-data-name="Full Interior"
-data-price="125"
->
+                        <button
+                            type="button"
+                            class="package-option selected"
+                            data-name="Express Exterior"
+                            data-price="95"
+                        >
 
-<strong>
-Full Interior
-</strong>
+                            <strong>
+                                Express Exterior
+                            </strong>
 
-<small>
-Interior deep clean
-</small>
+                            <small>
+                                Exterior refresh
+                            </small>
 
-<b>
-$125+
-</b>
+                            <b>
+                                $95+
+                            </b>
 
-</button>
+                        </button>
 
 
-<button
-class="package-option"
-data-name="Full Detail"
-data-price="195"
->
+                        <button
+                            type="button"
+                            class="package-option"
+                            data-name="Full Interior"
+                            data-price="125"
+                        >
 
-<strong>
-Full Detail
-</strong>
+                            <strong>
+                                Full Interior
+                            </strong>
 
-<small>
-Most popular
-</small>
+                            <small>
+                                Interior deep clean
+                            </small>
 
-<b>
-$195+
-</b>
+                            <b>
+                                $125+
+                            </b>
 
-</button>
+                        </button>
 
 
-<button
-class="package-option"
-data-name="Premium Detail"
-data-price="275"
->
+                        <button
+                            type="button"
+                            class="package-option"
+                            data-name="Full Detail"
+                            data-price="195"
+                        >
 
-<strong>
-Premium Detail
-</strong>
+                            <strong>
+                                Full Detail
+                            </strong>
 
-<small>
-Maximum finish
-</small>
+                            <small>
+                                Most popular
+                            </small>
 
-<b>
-$275+
-</b>
+                            <b>
+                                $195+
+                            </b>
 
-</button>
+                        </button>
 
-</div>
 
+                        <button
+                            type="button"
+                            class="package-option"
+                            data-name="Premium Detail"
+                            data-price="275"
+                        >
 
-<div class="step-buttons">
+                            <strong>
+                                Premium Detail
+                            </strong>
 
-<span></span>
+                            <small>
+                                Maximum finish
+                            </small>
 
-<button
-class="btn primary"
-onclick="nextStep()"
->
-Continue →
-</button>
+                            <b>
+                                $275+
+                            </b>
 
-</div>
+                        </button>
 
-</div>
 
+                    </div>
 
-<!-- STEP 2 -->
 
-<div
-class="step"
-id="step2"
->
+                    <div class="step-buttons">
 
-<div class="step-title">
-Vehicle Information
-</div>
+                        <span></span>
 
-<div class="step-subtitle">
-Tell us about your vehicle.
-</div>
+                        <button
+                            type="button"
+                            class="btn primary"
+                            onclick="nextStep()"
+                        >
+                            Continue →
+                        </button>
 
+                    </div>
 
-<div class="form-grid">
+                </div>
 
-<div class="field">
 
-<label>
-Full Name
-</label>
+                <!-- =================================================
+                     STEP 2
+                ================================================= -->
 
-<input
-id="name"
-placeholder="Your name"
->
+                <div
+                    class="step"
+                    id="step2"
+                >
 
-</div>
+                    <div class="step-title">
+                        Vehicle Information
+                    </div>
 
+                    <div class="step-subtitle">
+                        Tell us about your vehicle.
+                    </div>
 
-<div class="field">
 
-<label>
-Phone
-</label>
+                    <div class="form-grid">
 
-<input
-id="phone"
-placeholder="470-555-5555"
->
 
-</div>
+                        <div class="field">
 
-</div>
+                            <label>
+                                Full Name
+                            </label>
 
+                            <input
+                                id="name"
+                                type="text"
+                                autocomplete="name"
+                                placeholder="Your name"
+                            >
 
-<div class="form-grid">
+                        </div>
 
-<div class="field">
 
-<label>
-Vehicle
-</label>
+                        <div class="field">
 
-<input
-id="vehicle"
-placeholder="2024 BMW M4"
->
+                            <label>
+                                Phone
+                            </label>
 
-</div>
+                            <input
+                                id="phone"
+                                type="tel"
+                                autocomplete="tel"
+                                placeholder="470-555-5555"
+                            >
 
+                        </div>
 
-<div class="field">
 
-<label>
-Vehicle Size
-</label>
+                    </div>
 
-<select id="size">
 
-<option>
-Sedan / Coupe
-</option>
+                    <div class="form-grid">
 
-<option>
-Small SUV / Crossover
-</option>
 
-<option>
-Large SUV / Truck
-</option>
+                        <div class="field">
 
-<option>
-3-Row SUV
-</option>
+                            <label>
+                                Vehicle
+                            </label>
 
-</select>
+                            <input
+                                id="vehicle"
+                                type="text"
+                                placeholder="2024 BMW M4"
+                            >
 
-</div>
+                        </div>
 
-</div>
 
+                        <div class="field">
 
-<div class="field">
+                            <label>
+                                Vehicle Size
+                            </label>
 
-<label>
-Vehicle Condition / Notes
-</label>
+                            <select id="size">
 
-<textarea
-id="notes"
-placeholder="Pet hair, stains, mud, heavy dirt, etc."
-></textarea>
+                                <option>
+                                    Sedan / Coupe
+                                </option>
 
-</div>
+                                <option>
+                                    Small SUV / Crossover
+                                </option>
 
+                                <option>
+                                    Large SUV / Truck
+                                </option>
 
-<div class="step-buttons">
+                                <option>
+                                    3-Row SUV
+                                </option>
 
-<button
-class="btn outline"
-onclick="previousStep()"
->
-← Back
-</button>
+                            </select>
 
-<button
-class="btn primary"
-onclick="nextStep()"
->
-Continue →
-</button>
+                        </div>
 
-</div>
 
-</div>
+                    </div>
 
 
-<!-- STEP 3 -->
+                    <div class="field">
 
-<div
-class="step"
-id="step3"
->
+                        <label>
+                            Vehicle Condition / Notes
+                        </label>
 
-<div class="step-title">
-Preferred Date
-</div>
+                        <textarea
+                            id="notes"
+                            placeholder="Pet hair, stains, mud, heavy dirt, etc."
+                        ></textarea>
 
-<div class="step-subtitle">
-Tell us when you'd like your detail.
-</div>
+                    </div>
 
 
-<div class="form-grid">
+                    <div class="step-buttons">
 
-<div class="field">
+                        <button
+                            type="button"
+                            class="btn outline"
+                            onclick="previousStep()"
+                        >
+                            ← Back
+                        </button>
 
-<label>
-Preferred Date
-</label>
 
-<input
-id="date"
-type="date"
->
+                        <button
+                            type="button"
+                            class="btn primary"
+                            onclick="nextStep()"
+                        >
+                            Continue →
+                        </button>
 
-</div>
+                    </div>
 
+                </div>
 
-<div class="field">
 
-<label>
-Preferred Time
-</label>
+                <!-- =================================================
+                     STEP 3
+                ================================================= -->
 
-<select id="time">
+                <div
+                    class="step"
+                    id="step3"
+                >
 
-<option>
-Morning
-</option>
+                    <div class="step-title">
+                        Preferred Date
+                    </div>
 
-<option>
-Midday
-</option>
+                    <div class="step-subtitle">
+                        Tell us when you'd like your detail.
+                    </div>
 
-<option>
-Afternoon
-</option>
 
-<option>
-Evening
-</option>
+                    <div class="form-grid">
 
-</select>
 
-</div>
+                        <div class="field">
 
-</div>
+                            <label>
+                                Preferred Date
+                            </label>
 
+                            <input
+                                id="date"
+                                type="date"
+                            >
 
-<div class="field">
+                        </div>
 
-<label>
-Service Location
-</label>
 
-<input
-id="location"
-placeholder="City / area"
->
+                        <div class="field">
 
-</div>
+                            <label>
+                                Preferred Time
+                            </label>
 
+                            <select id="time">
 
-<div class="field">
+                                <option>
+                                    Morning
+                                </option>
 
-<label>
-Additional Notes
-</label>
+                                <option>
+                                    Midday
+                                </option>
 
-<textarea
-id="finalNotes"
-placeholder="Anything else we should know?"
-></textarea>
+                                <option>
+                                    Afternoon
+                                </option>
 
-</div>
+                                <option>
+                                    Evening
+                                </option>
 
+                            </select>
 
-<div class="step-buttons">
+                        </div>
 
-<button
-class="btn outline"
-onclick="previousStep()"
->
-← Back
-</button>
 
-<button
-class="btn primary"
-onclick="nextStep()"
->
-Review →
-</button>
+                    </div>
 
-</div>
 
-</div>
+                    <div class="field">
 
+                        <label>
+                            Service Location
+                        </label>
 
-<!-- STEP 4 -->
+                        <input
+                            id="location"
+                            type="text"
+                            autocomplete="street-address"
+                            placeholder="City / area"
+                        >
 
-<div
-class="step"
-id="step4"
->
+                    </div>
 
-<div class="step-title">
-Review Your Request
-</div>
 
-<div class="step-subtitle">
-Make sure everything looks correct.
-</div>
+                    <div class="field">
 
+                        <label>
+                            Additional Notes
+                        </label>
 
-<div class="summary">
+                        <textarea
+                            id="finalNotes"
+                            placeholder="Anything else we should know?"
+                        ></textarea>
 
-<div class="summary-row">
+                    </div>
 
-<span>
-Service
-</span>
 
-<strong id="summaryService">
-Express Exterior
-</strong>
+                    <div class="step-buttons">
 
-</div>
+                        <button
+                            type="button"
+                            class="btn outline"
+                            onclick="previousStep()"
+                        >
+                            ← Back
+                        </button>
 
 
-<div class="summary-row">
+                        <button
+                            type="button"
+                            class="btn primary"
+                            onclick="nextStep()"
+                        >
+                            Review →
+                        </button>
 
-<span>
-Starting Price
-</span>
+                    </div>
 
-<strong id="summaryPrice">
-$95+
-</strong>
+                </div>
 
-</div>
 
+                <!-- =================================================
+                     STEP 4
+                ================================================= -->
 
-<div class="summary-row">
+                <div
+                    class="step"
+                    id="step4"
+                >
 
-<span>
-Vehicle
-</span>
+                    <div class="step-title">
+                        Review Your Request
+                    </div>
 
-<strong id="summaryVehicle">
-—
-</strong>
+                    <div class="step-subtitle">
+                        Make sure everything looks correct.
+                    </div>
 
-</div>
 
+                    <div class="summary">
 
-<div class="summary-row">
 
-<span>
-Date
-</span>
+                        <div class="summary-row">
 
-<strong id="summaryDate">
-—
-</strong>
+                            <span>
+                                Service
+                            </span>
 
-</div>
+                            <strong id="summaryService">
+                                Express Exterior
+                            </strong>
 
+                        </div>
 
-<div class="summary-row">
 
-<span>
-Location
-</span>
+                        <div class="summary-row">
 
-<strong id="summaryLocation">
-—
-</strong>
+                            <span>
+                                Starting Price
+                            </span>
 
-</div>
+                            <strong id="summaryPrice">
+                                $95+
+                            </strong>
 
-</div>
+                        </div>
 
 
-<div class="step-buttons">
+                        <div class="summary-row">
 
-<button
-class="btn outline"
-onclick="previousStep()"
->
-← Back
-</button>
+                            <span>
+                                Vehicle
+                            </span>
 
-<button
-class="btn primary"
-onclick="submitBooking()"
->
-Request Quote →
-</button>
+                            <strong id="summaryVehicle">
+                                —
+                            </strong>
 
-</div>
+                        </div>
 
-</div>
 
-</div>
+                        <div class="summary-row">
 
-</div>
+                            <span>
+                                Date
+                            </span>
 
-</div>
+                            <strong id="summaryDate">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Location
+                            </span>
+
+                            <strong id="summaryLocation">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="step-buttons">
+
+                        <button
+                            type="button"
+                            class="btn outline"
+                            onclick="previousStep()"
+                        >
+                            ← Back
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn primary"
+                            onclick="submitBooking()"
+                        >
+                            Request Quote →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      FAQ
-========================= -->
+======================================================= -->
 
 <section id="faq">
 
-<div class="container">
-
-<div class="section-header">
-
-<div class="eyebrow">
-FAQ
-</div>
-
-<h2>
-Questions?
-<span>Answered.</span>
-</h2>
-
-</div>
+    <div class="container">
 
 
-<div class="faq">
+        <div class="section-header">
+
+            <div class="eyebrow">
+                FAQ
+            </div>
+
+            <h2>
+                Questions?
+                <span>Answered.</span>
+            </h2>
+
+        </div>
 
 
-<details>
-
-<summary>
-How much does a detail cost?
-</summary>
-
-<p>
-Services start at $95. Final pricing depends
-on vehicle size and condition.
-</p>
-
-</details>
+        <div class="faq">
 
 
-<details>
+            <details>
 
-<summary>
-Do you come to me?
-</summary>
+                <summary>
+                    How much does a detail cost?
+                </summary>
 
-<p>
-AURA is built around mobile detailing and can
-service customers at locations where the setup allows.
-</p>
+                <p>
+                    Services start at $95. Final pricing depends
+                    on vehicle size and condition.
+                </p>
 
-</details>
-
-
-<details>
-
-<summary>
-What areas do you serve?
-</summary>
-
-<p>
-Primary service areas include Cartersville,
-White, Canton, Rome and surrounding areas.
-</p>
-
-</details>
+            </details>
 
 
-<details>
+            <details>
 
-<summary>
-Why do you ask about vehicle condition?
-</summary>
+                <summary>
+                    Do you come to me?
+                </summary>
 
-<p>
-Vehicle condition can affect the amount of work
-required and therefore the final quote.
-</p>
+                <p>
+                    AURA is built around mobile detailing and can
+                    service customers at locations where the setup allows.
+                </p>
 
-</details>
+            </details>
 
 
-<details>
+            <details>
 
-<summary>
-Is my appointment automatically confirmed?
-</summary>
+                <summary>
+                    What areas do you serve?
+                </summary>
 
-<p>
-No. This form submits a booking request.
-AURA will contact you to confirm availability,
-location and final pricing.
-</p>
+                <p>
+                    Primary service areas include Cartersville,
+                    White, Canton, Rome and surrounding areas.
+                </p>
 
-</details>
+            </details>
 
-</div>
 
-</div>
+            <details>
+
+                <summary>
+                    Why do you ask about vehicle condition?
+                </summary>
+
+                <p>
+                    Vehicle condition can affect the amount of work
+                    required and therefore the final quote.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Is my appointment automatically confirmed?
+                </summary>
+
+                <p>
+                    No. This form submits a booking request.
+                    AURA will contact you to confirm availability,
+                    location and final pricing.
+                </p>
+
+            </details>
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      FOOTER
-========================= -->
+======================================================= -->
 
 <footer>
 
-<div class="footer">
+    <div class="footer">
 
 
-<div>
+        <div>
 
-<div class="footer-logo">
-AURA
-<span>AUTO DETAILS</span>
-</div>
+            <div class="footer-logo">
+                AURA
+                <span>AUTO DETAILS</span>
+            </div>
 
-<small>
-Premium mobile auto detailing.
-</small>
+            <small>
+                Premium mobile auto detailing.
+            </small>
 
-</div>
-
-
-<div class="footer-contact">
-
-<a href="tel:4703343089">
-470-334-3089
-</a>
-
-<br>
-
-Cartersville • White • Canton • Rome
-
-</div>
+        </div>
 
 
-</div>
+        <div class="footer-contact">
+
+            <a href="tel:4703343089">
+                470-334-3089
+            </a>
+
+            <br>
+
+            Cartersville • White • Canton • Rome
+
+        </div>
+
+
+    </div>
 
 </footer>
 
 
 <script>
 
-/* =========================
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
+
+menuToggle.addEventListener("click", function() {
+
+    const isOpen =
+        mobileMenu.classList.toggle("open");
+
+    menuToggle.classList.toggle(
+        "active",
+        isOpen
+    );
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen
+    );
+
+});
+
+
+/* CLOSE MOBILE MENU AFTER CLICKING A LINK */
+
+document
+    .querySelectorAll(".mobile-menu a")
+    .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            mobileMenu.classList.remove("open");
+
+            menuToggle.classList.remove("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        });
+
+    });
+
+
+/* =========================================================
    BOOKING SYSTEM
-========================= */
+========================================================= */
 
 let currentStep = 1;
 
 let selectedService =
-"Express Exterior";
+    "Express Exterior";
 
 let selectedPrice = 95;
 
 
-/* =========================
+/* =========================================================
    SERVICE SELECTION
-========================= */
+========================================================= */
 
 document
-.querySelectorAll(".package-option")
-.forEach(button => {
+    .querySelectorAll(".package-option")
+    .forEach(button => {
 
-button.addEventListener("click", () => {
+        button.addEventListener("click", () => {
 
-document
-.querySelectorAll(".package-option")
-.forEach(btn =>
-btn.classList.remove("selected")
-);
+            document
+                .querySelectorAll(".package-option")
+                .forEach(btn =>
+                    btn.classList.remove("selected")
+                );
 
-button.classList.add("selected");
+            button.classList.add("selected");
 
-selectedService =
-button.dataset.name;
+            selectedService =
+                button.dataset.name;
 
-selectedPrice =
-button.dataset.price;
+            selectedPrice =
+                button.dataset.price;
 
-});
+        });
 
-});
+    });
 
 
-/* =========================
+/* =========================================================
    NEXT STEP
-========================= */
+========================================================= */
 
 function nextStep() {
 
-if(currentStep === 2) {
 
-const name =
-document.getElementById("name");
+    /* STEP 2 VALIDATION */
 
-const phone =
-document.getElementById("phone");
+    if(currentStep === 2) {
 
-const vehicle =
-document.getElementById("vehicle");
+        const name =
+            document.getElementById("name");
 
-if(
-!name.value.trim() ||
-!phone.value.trim() ||
-!vehicle.value.trim()
-) {
+        const phone =
+            document.getElementById("phone");
 
-alert(
-"Please fill out your name, phone number, and vehicle."
-);
+        const vehicle =
+            document.getElementById("vehicle");
 
-return;
+
+        if(
+            !name.value.trim() ||
+            !phone.value.trim() ||
+            !vehicle.value.trim()
+        ) {
+
+            alert(
+                "Please fill out your name, phone number, and vehicle."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /* STEP 3 VALIDATION */
+
+    if(currentStep === 3) {
+
+        const date =
+            document.getElementById("date");
+
+        const location =
+            document.getElementById("location");
+
+
+        if(
+            !date.value ||
+            !location.value.trim()
+        ) {
+
+            alert(
+                "Please choose a date and service location."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    if(currentStep < 4) {
+
+        currentStep++;
+
+        updateSteps();
+
+    }
 
 }
 
-}
 
-
-if(currentStep === 3) {
-
-const date =
-document.getElementById("date");
-
-const location =
-document.getElementById("location");
-
-if(
-!date.value ||
-!location.value.trim()
-) {
-
-alert(
-"Please choose a date and service location."
-);
-
-return;
-
-}
-
-}
-
-
-if(currentStep < 4) {
-
-currentStep++;
-
-updateSteps();
-
-}
-
-}
-
-
-/* =========================
+/* =========================================================
    PREVIOUS STEP
-========================= */
+========================================================= */
 
 function previousStep() {
 
-if(currentStep > 1) {
+    if(currentStep > 1) {
 
-currentStep--;
+        currentStep--;
 
-updateSteps();
+        updateSteps();
+
+    }
 
 }
 
-}
 
-
-/* =========================
+/* =========================================================
    UPDATE STEPS
-========================= */
+========================================================= */
 
 function updateSteps() {
 
-document
-.querySelectorAll(".step")
-.forEach(step => {
 
-step.classList.remove("active");
+    document
+        .querySelectorAll(".step")
+        .forEach(step => {
 
-});
+            step.classList.remove("active");
 
-
-document
-.getElementById(
-"step" + currentStep
-)
-.classList.add("active");
+        });
 
 
-document
-.querySelectorAll(".progress span")
-.forEach((bar,index) => {
-
-bar.classList.toggle(
-"active",
-index < currentStep
-);
-
-});
+    document
+        .getElementById(
+            "step" + currentStep
+        )
+        .classList.add("active");
 
 
-updateSummary();
+    document
+        .querySelectorAll(".progress span")
+        .forEach((bar,index) => {
+
+            bar.classList.toggle(
+                "active",
+                index < currentStep
+            );
+
+        });
+
+
+    updateSummary();
+
+
+    /* Scroll booking card to top on mobile */
+
+    if(window.innerWidth <= 700) {
+
+        document
+            .querySelector(".booking-card")
+            .scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+    }
 
 }
 
 
-/* =========================
+/* =========================================================
    SUMMARY
-========================= */
+========================================================= */
 
 function updateSummary() {
 
-document.getElementById(
-"summaryService"
-).textContent =
-selectedService;
+
+    document.getElementById(
+        "summaryService"
+    ).textContent =
+        selectedService;
 
 
-document.getElementById(
-"summaryPrice"
-).textContent =
-"$" + selectedPrice + "+";
+    document.getElementById(
+        "summaryPrice"
+    ).textContent =
+        "$" + selectedPrice + "+";
 
 
-const vehicle =
-document.getElementById("vehicle");
+    const vehicle =
+        document.getElementById("vehicle");
 
-const date =
-document.getElementById("date");
+    const date =
+        document.getElementById("date");
 
-const location =
-document.getElementById("location");
+    const location =
+        document.getElementById("location");
 
 
-if(vehicle) {
+    if(vehicle) {
 
-document.getElementById(
-"summaryVehicle"
-).textContent =
-vehicle.value || "—";
+        document.getElementById(
+            "summaryVehicle"
+        ).textContent =
+            vehicle.value || "—";
+
+    }
+
+
+    if(date) {
+
+        document.getElementById(
+            "summaryDate"
+        ).textContent =
+            date.value || "—";
+
+    }
+
+
+    if(location) {
+
+        document.getElementById(
+            "summaryLocation"
+        ).textContent =
+            location.value || "—";
+
+    }
 
 }
 
 
-if(date) {
-
-document.getElementById(
-"summaryDate"
-).textContent =
-date.value || "—";
-
-}
-
-
-if(location) {
-
-document.getElementById(
-"summaryLocation"
-).textContent =
-location.value || "—";
-
-}
-
-}
-
-
-/* =========================
+/* =========================================================
    SUBMIT BOOKING
-========================= */
+========================================================= */
 
 function submitBooking() {
 
-const name =
-document.getElementById("name").value;
 
-const phone =
-document.getElementById("phone").value;
+    const name =
+        document.getElementById("name").value;
 
-const vehicle =
-document.getElementById("vehicle").value;
+    const phone =
+        document.getElementById("phone").value;
 
-const size =
-document.getElementById("size").value;
+    const vehicle =
+        document.getElementById("vehicle").value;
 
-const date =
-document.getElementById("date").value;
+    const size =
+        document.getElementById("size").value;
 
-const time =
-document.getElementById("time").value;
+    const date =
+        document.getElementById("date").value;
 
-const location =
-document.getElementById("location").value;
+    const time =
+        document.getElementById("time").value;
 
-const notes =
-document.getElementById("notes").value;
+    const location =
+        document.getElementById("location").value;
 
-const finalNotes =
-document.getElementById("finalNotes").value;
+    const notes =
+        document.getElementById("notes").value;
+
+    const finalNotes =
+        document.getElementById("finalNotes").value;
 
 
-const message =
+    const message =
 
 `AURA AUTO DETAILS — BOOKING REQUEST
 
@@ -2549,34 +3387,38 @@ ${finalNotes || "None"}
 Please confirm availability and final pricing.`;
 
 
-/*
-   Opens the customer's messaging app
-   with the booking request prepared.
-*/
+    /*
+        Opens the customer's messaging app
+        with the booking request prepared.
+    */
 
-window.location.href =
-"sms:4703343089?body=" +
-encodeURIComponent(message);
+    window.location.href =
+        "sms:4703343089?body=" +
+        encodeURIComponent(message);
 
 }
 
 
-/* =========================
+/* =========================================================
    MINIMUM BOOKING DATE
-========================= */
+========================================================= */
 
-const today = new Date();
+const today =
+    new Date();
+
 
 today.setMinutes(
-today.getMinutes()
--
-today.getTimezoneOffset()
+    today.getMinutes()
+    -
+    today.getTimezoneOffset()
 );
 
+
 document.getElementById("date").min =
-today.toISOString().split("T")[0];
+    today.toISOString().split("T")[0];
 
 </script>
+
 
 </body>
 </html>
