@@ -19,15 +19,15 @@
 }
 
 :root {
-    --black: #030405;
-    --dark: #080b0f;
-    --card: #0d1116;
+    --black: #020304;
+    --dark: #05070a;
+    --card: #0b1015;
     --blue: #008cff;
     --blue-light: #32b4ff;
     --gold: #f4c542;
     --white: #ffffff;
     --gray: #9da5ae;
-    --border: rgba(255,255,255,.1);
+    --border: rgba(255,255,255,.10);
 }
 
 html {
@@ -40,7 +40,6 @@ body {
     background: var(--black);
     color: white;
     overflow-x: hidden;
-    width: 100%;
 }
 
 button,
@@ -62,17 +61,16 @@ nav {
     width: 100%;
     z-index: 1000;
 
-    background: rgba(3,4,5,.88);
+    background: rgba(2,3,4,.88);
     backdrop-filter: blur(18px);
 
-    border-bottom: 1px solid rgba(0,140,255,.25);
+    border-bottom: 1px solid rgba(0,140,255,.22);
 }
 
 .nav-container {
     max-width: 1250px;
     margin: auto;
-
-    padding: 16px 25px;
+    padding: 14px 25px;
 
     display: flex;
     align-items: center;
@@ -101,16 +99,14 @@ nav {
 
 .nav-links {
     display: flex;
-    gap: 28px;
     align-items: center;
+    gap: 30px;
 }
 
 .nav-links a {
     color: #ddd;
     text-decoration: none;
-
     font-size: 13px;
-
     transition: .2s;
 }
 
@@ -119,24 +115,23 @@ nav {
 }
 
 .book-button {
-    background: linear-gradient(
-        135deg,
-        #159cff,
-        #006fe6
-    );
+    background: linear-gradient(135deg,#159cff,#006fe6);
 
-    padding: 11px 18px;
+    padding: 11px 19px;
 
     border-radius: 7px;
 
     color: white !important;
 
     font-weight: 900;
+
+    box-shadow:
+        0 0 20px rgba(0,140,255,.18);
 }
 
 
 /* =========================================================
-   MOBILE MENU BUTTON
+   MOBILE MENU
 ========================================================= */
 
 .menu-toggle {
@@ -156,13 +151,10 @@ nav {
     justify-content: center;
 
     flex-direction: column;
-
     gap: 5px;
 }
 
 .menu-toggle span {
-    display: block;
-
     width: 20px;
     height: 2px;
 
@@ -185,11 +177,6 @@ nav {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-
-/* =========================================================
-   MOBILE NAVIGATION
-========================================================= */
-
 .mobile-menu {
     display: none;
 
@@ -200,7 +187,7 @@ nav {
 
     width: 100%;
 
-    background: rgba(3,4,5,.97);
+    background: rgba(2,3,4,.97);
 
     backdrop-filter: blur(20px);
 
@@ -225,14 +212,9 @@ nav {
     text-decoration: none;
 
     font-size: 14px;
-
     font-weight: 700;
 
     border-bottom: 1px solid rgba(255,255,255,.06);
-}
-
-.mobile-menu a:last-child {
-    border-bottom: none;
 }
 
 .mobile-menu a:hover {
@@ -257,12 +239,13 @@ nav {
 
 
 /* =========================================================
-   TOP HERO GLOW
-   BMW CAN BE ADDED HERE LATER
+   HERO
 ========================================================= */
 
-.top-space {
-    height: 67px;
+.hero {
+    min-height: 680px;
+
+    padding: 120px 25px 70px;
 
     position: relative;
 
@@ -270,111 +253,61 @@ nav {
 
     background:
         radial-gradient(
-            ellipse at center,
-            rgba(0,140,255,.08),
-            transparent 65%
-        );
-
-    border-bottom:
-        1px solid rgba(0,140,255,.15);
+            circle at 70% 40%,
+            rgba(0,140,255,.12),
+            transparent 35%
+        ),
+        #020304;
 }
 
-.top-space::after {
+.hero::after {
     content: "";
 
     position: absolute;
 
-    bottom: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
 
-    width: 100%;
-    height: 1px;
+    height: 2px;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            rgba(0,140,255,.7),
+            var(--blue),
             transparent
         );
 
     box-shadow:
-        0 0 18px rgba(0,140,255,.7);
+        0 0 20px rgba(0,140,255,.8);
 }
 
-
-/* =========================================================
-   GENERAL
-========================================================= */
-
-.container {
-    width: 100%;
+.hero-container {
     max-width: 1250px;
+
+    min-height: 530px;
 
     margin: auto;
 
     position: relative;
-    z-index: 2;
-}
 
-section {
-    padding: 90px 25px;
+    display: flex;
+
+    align-items: center;
 }
 
 
 /* =========================================================
-   HERO
+   HERO CONTENT
 ========================================================= */
 
-.hero {
-    min-height: 610px;
-
-    display: flex;
-    align-items: center;
-
-    padding: 90px 25px;
+.hero-content {
+    width: 58%;
 
     position: relative;
 
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 85% 35%,
-            rgba(0,140,255,.15),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 10% 90%,
-            rgba(0,90,255,.06),
-            transparent 35%
-        ),
-        #030405;
-}
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-
-    width: 500px;
-    height: 500px;
-
-    right: -250px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(0,140,255,.08);
-
-    box-shadow:
-        0 0 100px rgba(0,140,255,.05);
-}
-
-.hero-content {
-    max-width: 820px;
+    z-index: 5;
 }
 
 .eyebrow {
@@ -392,9 +325,11 @@ section {
 }
 
 .hero h1 {
+    max-width: 720px;
+
     font-size: clamp(52px,7vw,90px);
 
-    line-height: .92;
+    line-height: .9;
 
     letter-spacing: -4px;
 
@@ -405,32 +340,32 @@ section {
     color: var(--blue);
 
     text-shadow:
-        0 0 30px rgba(0,140,255,.2);
+        0 0 30px rgba(0,140,255,.3);
 }
 
 .hero-description {
-    max-width: 650px;
+    max-width: 600px;
 
     margin-top: 27px;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
 
     color: var(--gray);
 
-    font-size: 18px;
+    font-size: 17px;
 
-    line-height: 1.6;
+    line-height: 1.55;
 }
 
 .buttons {
     display: flex;
 
-    gap: 13px;
+    gap: 12px;
 
     flex-wrap: wrap;
 }
 
 .btn {
-    padding: 14px 23px;
+    padding: 14px 22px;
 
     border-radius: 8px;
 
@@ -461,22 +396,22 @@ section {
     color: white;
 
     box-shadow:
-        0 0 25px rgba(0,140,255,.18);
+        0 0 25px rgba(0,140,255,.2);
 }
 
 .primary:hover {
     transform: translateY(-3px);
 
     box-shadow:
-        0 0 35px rgba(0,140,255,.4);
+        0 0 35px rgba(0,140,255,.45);
 }
 
 .outline {
-    border: 1px solid #333;
+    border: 1px solid #34404c;
 
     color: white;
 
-    background: rgba(255,255,255,.02);
+    background: rgba(255,255,255,.025);
 }
 
 .outline:hover {
@@ -485,30 +420,155 @@ section {
     color: var(--blue);
 }
 
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.hero-image {
+    position: absolute;
+
+    right: -80px;
+    top: 0;
+
+    width: 57%;
+    height: 100%;
+
+    z-index: 2;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.hero-image::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    background:
+        linear-gradient(
+            90deg,
+            #020304 0%,
+            rgba(2,3,4,.72) 12%,
+            rgba(2,3,4,.15) 48%,
+            transparent 75%
+        );
+}
+
+.hero-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    background:
+        linear-gradient(
+            0deg,
+            #020304 0%,
+            transparent 22%,
+            transparent 75%,
+            #020304 100%
+        );
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    filter:
+        brightness(.75)
+        contrast(1.12)
+        saturate(.9);
+
+    mask-image:
+        linear-gradient(
+            to right,
+            transparent 0%,
+            black 28%,
+            black 100%
+        );
+}
+
+
+/* =========================================================
+   HERO STATS
+========================================================= */
+
 .stats {
     display: flex;
 
-    gap: 45px;
+    gap: 0;
 
-    margin-top: 48px;
+    margin-top: 42px;
 
     flex-wrap: wrap;
+}
+
+.stat {
+    min-width: 105px;
+
+    padding-right: 25px;
+    margin-right: 25px;
+
+    border-right:
+        1px solid rgba(255,255,255,.10);
+}
+
+.stat:last-child {
+    border-right: none;
 }
 
 .stat strong {
     display: block;
 
-    font-size: 25px;
+    font-size: 22px;
+
+    margin-bottom: 5px;
 }
 
 .stat small {
     color: #737a83;
 
-    font-size: 9px;
+    font-size: 8px;
 
     letter-spacing: 1px;
 
     text-transform: uppercase;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.container {
+    width: 100%;
+    max-width: 1250px;
+
+    margin: auto;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+section {
+    padding: 90px 25px;
 }
 
 
@@ -548,22 +608,28 @@ section {
 ========================================================= */
 
 .services {
-    background: #05070a;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0,140,255,.04),
+            transparent 35%
+        ),
+        #05070a;
 }
 
 .packages {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
-    gap: 17px;
+    gap: 15px;
 }
 
 .package {
     position: relative;
 
-    padding: 27px 22px;
+    padding: 27px 21px;
 
     background:
         linear-gradient(
@@ -574,9 +640,33 @@ section {
 
     border: 1px solid var(--border);
 
-    border-radius: 15px;
+    border-radius: 14px;
 
     transition: .3s;
+
+    overflow: hidden;
+}
+
+.package::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0,140,255,.7),
+            transparent
+        );
+
+    opacity: .5;
 }
 
 .package:hover {
@@ -586,7 +676,7 @@ section {
         rgba(0,140,255,.65);
 
     box-shadow:
-        0 15px 40px rgba(0,0,0,.25);
+        0 15px 40px rgba(0,0,0,.3);
 }
 
 .package.popular {
@@ -607,7 +697,7 @@ section {
     background: var(--blue);
 
     border-radius:
-        0 15px 0 10px;
+        0 14px 0 10px;
 
     font-size: 9px;
 
@@ -615,13 +705,13 @@ section {
 }
 
 .package-icon {
-    font-size: 30px;
+    font-size: 28px;
 
     margin-bottom: 12px;
 }
 
 .package h3 {
-    font-size: 20px;
+    font-size: 19px;
 
     text-transform: uppercase;
 }
@@ -660,7 +750,7 @@ section {
 .features li {
     color: #c5c9ce;
 
-    font-size: 12px;
+    font-size: 11px;
 
     padding: 7px 0;
 
@@ -1173,44 +1263,23 @@ footer {
 
     .booking-layout {
         grid-template-columns: 1fr;
-
         gap: 35px;
     }
 
     .booking-copy {
         max-width: 750px;
-
         margin: auto;
     }
-}
 
-
-/* =========================================================
-   SMALL TABLET
-========================================================= */
-
-@media (max-width: 850px) {
-
-    .nav-container {
-        padding: 14px 20px;
+    .hero-content {
+        width: 62%;
     }
 
-    .nav-links {
-        gap: 15px;
+    .hero-image {
+        width: 58%;
+        right: -100px;
     }
 
-    .nav-links a {
-        font-size: 11px;
-    }
-
-    .hero {
-        padding-left: 25px;
-        padding-right: 25px;
-    }
-
-    section {
-        padding: 75px 22px;
-    }
 }
 
 
@@ -1228,23 +1297,20 @@ footer {
     }
 
 
-    /* MOBILE NAV */
+    /* NAV */
 
     .nav-container {
         min-height: 65px;
-
         padding: 10px 16px;
     }
 
     .logo {
         font-size: 21px;
-
         letter-spacing: 4px;
     }
 
     .logo span {
         font-size: 7px;
-
         letter-spacing: 3px;
     }
 
@@ -1257,10 +1323,173 @@ footer {
     }
 
 
-    /* TOP SPACE */
+    /* HERO */
 
-    .top-space {
-        height: 65px;
+    .hero {
+        min-height: 720px;
+
+        padding:
+            90px 18px 50px;
+
+        background:
+            radial-gradient(
+                circle at 50% 55%,
+                rgba(0,140,255,.12),
+                transparent 40%
+            ),
+            #020304;
+    }
+
+    .hero-container {
+        min-height: 0;
+
+        display: block;
+    }
+
+    .hero-content {
+        width: 100%;
+
+        position: relative;
+
+        z-index: 5;
+    }
+
+    .eyebrow {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 15px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(43px, 13vw, 60px);
+
+        line-height: .92;
+
+        letter-spacing: -2.5px;
+    }
+
+    .hero-description {
+        max-width: 390px;
+
+        font-size: 14px;
+
+        line-height: 1.55;
+
+        margin-top: 20px;
+
+        margin-bottom: 22px;
+    }
+
+
+    /* MOBILE HERO IMAGE */
+
+    .hero-image {
+        position: absolute;
+
+        right: 0;
+        bottom: 0;
+        top: auto;
+
+        width: 100%;
+        height: 370px;
+
+        z-index: 1;
+    }
+
+    .hero-image::before {
+        background:
+            linear-gradient(
+                180deg,
+                #020304 0%,
+                rgba(2,3,4,.65) 25%,
+                rgba(2,3,4,.1) 65%,
+                rgba(2,3,4,.3) 100%
+            );
+    }
+
+    .hero-image::after {
+        background:
+            linear-gradient(
+                0deg,
+                #020304 0%,
+                transparent 45%,
+                transparent 100%
+            );
+    }
+
+    .hero-image img {
+        object-position: center;
+
+        mask-image:
+            linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 25%,
+                black 100%
+            );
+    }
+
+
+    /* BUTTONS */
+
+    .buttons {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 9px;
+    }
+
+    .buttons .btn {
+        width: 100%;
+
+        min-height: 49px;
+    }
+
+
+    /* STATS */
+
+    .stats {
+        position: relative;
+
+        z-index: 6;
+
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 20px 0;
+
+        margin-top: 28px;
+    }
+
+    .stat {
+        min-width: 0;
+
+        padding-left: 12px;
+        padding-right: 10px;
+
+        margin-right: 0;
+
+        border-right:
+            1px solid rgba(255,255,255,.10);
+    }
+
+    .stat:nth-child(2n) {
+        border-right: none;
+    }
+
+    .stat strong {
+        font-size: 20px;
+    }
+
+    .stat small {
+        font-size: 7px;
     }
 
 
@@ -1276,113 +1505,6 @@ footer {
     }
 
 
-    /* HERO */
-
-    .hero {
-        min-height: auto;
-
-        padding:
-            75px 18px 65px;
-    }
-
-    .hero::before {
-        width: 280px;
-        height: 280px;
-
-        right: -180px;
-    }
-
-    .eyebrow {
-        font-size: 9px;
-
-        letter-spacing: 3px;
-
-        margin-bottom: 15px;
-    }
-
-    .hero h1 {
-        font-size:
-            clamp(43px, 13vw, 60px);
-
-        line-height: .94;
-
-        letter-spacing: -2.5px;
-    }
-
-    .hero-description {
-        font-size: 15px;
-
-        line-height: 1.55;
-
-        margin-top: 22px;
-
-        margin-bottom: 25px;
-    }
-
-
-    /* HERO BUTTONS */
-
-    .buttons {
-        width: 100%;
-
-        flex-direction: column;
-
-        gap: 10px;
-    }
-
-    .buttons .btn {
-        width: 100%;
-
-        min-height: 50px;
-    }
-
-
-    /* STATS */
-
-    .stats {
-        width: 100%;
-
-        display: grid;
-
-        grid-template-columns:
-            1fr 1fr;
-
-        gap: 25px 15px;
-
-        margin-top: 35px;
-    }
-
-    .stat strong {
-        font-size: 21px;
-    }
-
-    .stat small {
-        font-size: 8px;
-
-        letter-spacing: .8px;
-    }
-
-
-    /* SECTION HEADER */
-
-    .section-header {
-        margin-bottom: 32px;
-    }
-
-    .section-header h2 {
-        font-size:
-            clamp(34px, 10vw, 48px);
-
-        line-height: .98;
-    }
-
-    .section-header p {
-        font-size: 14px;
-
-        line-height: 1.55;
-    }
-
-
     /* SERVICES */
 
     .packages {
@@ -1392,8 +1514,6 @@ footer {
     }
 
     .package {
-        width: 100%;
-
         padding: 24px 20px;
     }
 
@@ -1401,18 +1521,8 @@ footer {
         transform: none;
     }
 
-    .package h3 {
-        font-size: 19px;
-    }
-
     .price {
         font-size: 39px;
-    }
-
-    .features li {
-        font-size: 12px;
-
-        padding: 8px 0;
     }
 
 
@@ -1424,16 +1534,8 @@ footer {
         gap: 10px;
     }
 
-    .addon {
-        padding: 17px;
-    }
-
     .addon:hover {
         transform: none;
-    }
-
-    .addon h4 {
-        font-size: 13px;
     }
 
 
@@ -1455,27 +1557,8 @@ footer {
 
     .booking-copy h2 {
         font-size:
-            clamp(35px, 10vw, 45px);
-
-        line-height: .98;
+            clamp(35px,10vw,45px);
     }
-
-    .booking-copy > p {
-        font-size: 14px;
-    }
-
-    .contact-box {
-        padding: 15px;
-    }
-
-    .contact-box strong {
-        font-size: 14px;
-
-        line-height: 1.5;
-    }
-
-
-    /* BOOKING CARD */
 
     .booking-card {
         width: 100%;
@@ -1485,18 +1568,8 @@ footer {
         border-radius: 13px;
     }
 
-    .step-title {
-        font-size: 21px;
-    }
 
-    .step-subtitle {
-        font-size: 12px;
-
-        line-height: 1.4;
-    }
-
-
-    /* BOOKING PACKAGE OPTIONS */
+    /* PACKAGE OPTIONS */
 
     .package-select {
         grid-template-columns: 1fr;
@@ -1507,17 +1580,11 @@ footer {
     .package-option {
         width: 100%;
 
-        min-height: 82px;
-
-        padding: 14px;
-    }
-
-    .package-option b {
-        font-size: 18px;
+        min-height: 80px;
     }
 
 
-    /* FORMS */
+    /* FORM */
 
     .form-grid {
         grid-template-columns: 1fr;
@@ -1525,31 +1592,12 @@ footer {
         gap: 0;
     }
 
-    .field {
-        margin-bottom: 13px;
-    }
-
-    .field label {
-        font-size: 10px;
-    }
-
     input,
     select,
     textarea {
-        width: 100%;
-
-        min-height: 46px;
-
-        padding: 12px;
-
-        /*
-           16px prevents iPhone Safari
-           from automatically zooming.
-        */
-
         font-size: 16px;
 
-        border-radius: 7px;
+        min-height: 46px;
     }
 
     textarea {
@@ -1562,11 +1610,9 @@ footer {
     .step-buttons {
         flex-direction: column-reverse;
 
-        gap: 9px;
-
         width: 100%;
 
-        margin-top: 20px;
+        gap: 9px;
     }
 
     .step-buttons span {
@@ -1582,63 +1628,21 @@ footer {
 
     /* SUMMARY */
 
-    .summary {
-        padding: 13px;
-    }
-
     .summary-row {
         display: grid;
 
-        grid-template-columns:
-            1fr auto;
+        grid-template-columns: 1fr auto;
 
         gap: 12px;
 
         font-size: 12px;
     }
 
-    .summary-row strong {
-        max-width: 180px;
-
-        overflow-wrap: anywhere;
-    }
-
-
-    /* FAQ */
-
-    .faq {
-        width: 100%;
-    }
-
-    details {
-        padding: 17px 0;
-    }
-
-    summary {
-        font-size: 14px;
-
-        line-height: 1.4;
-    }
-
-    details p {
-        font-size: 13px;
-
-        line-height: 1.55;
-    }
-
 
     /* FOOTER */
 
-    footer {
-        padding: 35px 18px;
-    }
-
     .footer {
-        width: 100%;
-
         flex-direction: column;
-
-        gap: 22px;
 
         text-align: center;
     }
@@ -1646,37 +1650,36 @@ footer {
     .footer-contact {
         text-align: center;
 
-        font-size: 12px;
-
         line-height: 1.7;
     }
+
 }
 
 
 /* =========================================================
-   VERY SMALL PHONES
+   SMALL PHONES
 ========================================================= */
 
 @media (max-width: 380px) {
+
+    .hero {
+        min-height: 700px;
+    }
 
     .hero h1 {
         font-size: 42px;
     }
 
     .hero-description {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .stats {
-        gap: 20px 10px;
+        gap: 18px 0;
     }
 
     .stat strong {
-        font-size: 19px;
-    }
-
-    .section-header h2 {
-        font-size: 34px;
+        font-size: 18px;
     }
 
     .booking-card {
@@ -1704,30 +1707,17 @@ footer {
             <span>AUTO DETAILS</span>
         </a>
 
-
-        <!-- DESKTOP NAV -->
-
         <div class="nav-links">
 
-            <a href="#home">
-                Home
-            </a>
+            <a href="#home">Home</a>
 
-            <a href="#services">
-                Services
-            </a>
+            <a href="#services">Services</a>
 
-            <a href="#addons">
-                Add-ons
-            </a>
+            <a href="#addons">Add-ons</a>
 
-            <a href="#booking">
-                Booking
-            </a>
+            <a href="#booking">Booking</a>
 
-            <a href="#faq">
-                FAQ
-            </a>
+            <a href="#faq">FAQ</a>
 
             <a href="#booking" class="book-button">
                 Book Now
@@ -1735,8 +1725,6 @@ footer {
 
         </div>
 
-
-        <!-- MOBILE MENU BUTTON -->
 
         <button
             class="menu-toggle"
@@ -1762,30 +1750,17 @@ footer {
 
 <div class="mobile-menu" id="mobileMenu">
 
-    <a href="#home">
-        Home
-    </a>
+    <a href="#home">Home</a>
 
-    <a href="#services">
-        Services
-    </a>
+    <a href="#services">Services</a>
 
-    <a href="#addons">
-        Add-ons
-    </a>
+    <a href="#addons">Add-ons</a>
 
-    <a href="#booking">
-        Booking
-    </a>
+    <a href="#booking">Booking</a>
 
-    <a href="#faq">
-        FAQ
-    </a>
+    <a href="#faq">FAQ</a>
 
-    <a
-        href="#booking"
-        class="mobile-book"
-    >
+    <a href="#booking" class="mobile-book">
         Book Your Detail
     </a>
 
@@ -1793,23 +1768,15 @@ footer {
 
 
 <!-- =======================================================
-     TOP SPACE
-     BMW CAN BE ADDED HERE LATER
-======================================================= -->
-
-<div class="top-space"></div>
-
-
-<!-- =======================================================
      HERO
 ======================================================= -->
 
-<section
-    class="hero"
-    id="home"
->
+<section class="hero" id="home">
 
-    <div class="container">
+    <div class="hero-container">
+
+
+        <!-- HERO TEXT -->
 
         <div class="hero-content">
 
@@ -1826,13 +1793,10 @@ footer {
 
 
             <p class="hero-description">
-
                 Professional interior and exterior detailing
                 brought directly to you.
-
                 Premium results. Attention to detail.
                 A vehicle that feels completely refreshed.
-
             </p>
 
 
@@ -1858,12 +1822,9 @@ footer {
 
             <div class="stats">
 
-
                 <div class="stat">
 
-                    <strong>
-                        $95+
-                    </strong>
+                    <strong>$95+</strong>
 
                     <small>
                         Starting Price
@@ -1874,9 +1835,7 @@ footer {
 
                 <div class="stat">
 
-                    <strong>
-                        Mobile
-                    </strong>
+                    <strong>Mobile</strong>
 
                     <small>
                         We Come To You
@@ -1887,9 +1846,7 @@ footer {
 
                 <div class="stat">
 
-                    <strong>
-                        Premium
-                    </strong>
+                    <strong>Premium</strong>
 
                     <small>
                         Attention To Detail
@@ -1900,9 +1857,7 @@ footer {
 
                 <div class="stat">
 
-                    <strong>
-                        4
-                    </strong>
+                    <strong>4</strong>
 
                     <small>
                         Service Packages
@@ -1911,6 +1866,25 @@ footer {
                 </div>
 
             </div>
+
+        </div>
+
+
+        <!-- =================================================
+             HERO DETAILING IMAGE
+             
+             PUT YOUR IMAGE IN THE SAME FOLDER AS THIS HTML
+             AND NAME IT:
+
+             hero-detailing.jpg
+        ================================================== -->
+
+        <div class="hero-image">
+
+            <img
+                src="hero-detailing.jpg"
+                alt="AURA Auto Details professional detailing"
+            >
 
         </div>
 
@@ -1923,10 +1897,7 @@ footer {
      SERVICES
 ======================================================= -->
 
-<section
-    class="services"
-    id="services"
->
+<section class="services" id="services">
 
     <div class="container">
 
@@ -1952,8 +1923,6 @@ footer {
 
         <div class="packages">
 
-
-            <!-- EXPRESS -->
 
             <div class="package">
 
@@ -1990,8 +1959,6 @@ footer {
             </div>
 
 
-            <!-- INTERIOR -->
-
             <div class="package">
 
                 <div class="package-icon">
@@ -2026,8 +1993,6 @@ footer {
 
             </div>
 
-
-            <!-- FULL DETAIL -->
 
             <div class="package popular">
 
@@ -2067,8 +2032,6 @@ footer {
             </div>
 
 
-            <!-- PREMIUM -->
-
             <div class="package gold">
 
                 <div class="package-icon">
@@ -2102,7 +2065,6 @@ footer {
 
             </div>
 
-
         </div>
 
     </div>
@@ -2111,16 +2073,12 @@ footer {
 
 
 <!-- =======================================================
-     ADD-ONS
+     ADDONS
 ======================================================= -->
 
-<section
-    class="addons-section"
-    id="addons"
->
+<section class="addons-section" id="addons">
 
     <div class="container">
-
 
         <div class="section-header">
 
@@ -2142,110 +2100,45 @@ footer {
 
         <div class="addons">
 
-
             <div class="addon">
-
-                <h4>
-                    🐾 Pet Hair Removal
-                </h4>
-
-                <p>
-                    +$30–$60
-                </p>
-
+                <h4>🐾 Pet Hair Removal</h4>
+                <p>+$30–$60</p>
             </div>
 
-
             <div class="addon">
-
-                <h4>
-                    🧽 Heavy Stain Extraction
-                </h4>
-
-                <p>
-                    +$30
-                </p>
-
+                <h4>🧽 Heavy Stain Extraction</h4>
+                <p>+$30</p>
             </div>
 
-
             <div class="addon">
-
-                <h4>
-                    💦 Excessive Dirt / Mud
-                </h4>
-
-                <p>
-                    +$25–$50
-                </p>
-
+                <h4>💦 Excessive Dirt / Mud</h4>
+                <p>+$25–$50</p>
             </div>
 
-
             <div class="addon">
-
-                <h4>
-                    ✨ Spray Wax / Sealant
-                </h4>
-
-                <p>
-                    +$25
-                </p>
-
+                <h4>✨ Spray Wax / Sealant</h4>
+                <p>+$25</p>
             </div>
 
-
             <div class="addon">
-
-                <h4>
-                    💡 Headlight Restoration
-                </h4>
-
-                <p>
-                    +$50
-                </p>
-
+                <h4>💡 Headlight Restoration</h4>
+                <p>+$50</p>
             </div>
 
-
             <div class="addon">
-
-                <h4>
-                    🔧 Engine Bay Cleaning
-                </h4>
-
-                <p>
-                    +$40
-                </p>
-
+                <h4>🔧 Engine Bay Cleaning</h4>
+                <p>+$40</p>
             </div>
 
-
             <div class="addon">
-
-                <h4>
-                    🌬️ Odor Treatment
-                </h4>
-
-                <p>
-                    +$30
-                </p>
-
+                <h4>🌬️ Odor Treatment</h4>
+                <p>+$30</p>
             </div>
 
-
             <div class="addon">
-
-                <h4>
-                    🚙 Large Truck / 3-Row SUV
-                </h4>
-
-                <p>
-                    +$25–$50
-                </p>
-
+                <h4>🚙 Large Truck / 3-Row SUV</h4>
+                <p>+$25–$50</p>
             </div>
-
 
         </div>
 
@@ -2258,18 +2151,12 @@ footer {
      BOOKING
 ======================================================= -->
 
-<section
-    class="booking"
-    id="booking"
->
+<section class="booking" id="booking">
 
     <div class="container">
 
-
         <div class="booking-layout">
 
-
-            <!-- BOOKING INFORMATION -->
 
             <div class="booking-copy">
 
@@ -2283,13 +2170,10 @@ footer {
                 </h2>
 
                 <p>
-
                     Choose your service, tell us about your vehicle,
                     and request your preferred date.
-
                     We'll contact you to confirm availability
                     and final pricing.
-
                 </p>
 
 
@@ -2300,11 +2184,9 @@ footer {
                     </small>
 
                     <strong>
-
                         <a href="tel:4703343089">
                             470-334-3089
                         </a>
-
                     </strong>
 
                 </div>
@@ -2342,30 +2224,19 @@ footer {
 
             <div class="booking-card">
 
-
-                <!-- PROGRESS -->
-
                 <div class="progress">
 
                     <span class="active"></span>
-
                     <span></span>
-
                     <span></span>
-
                     <span></span>
 
                 </div>
 
 
-                <!-- =================================================
-                     STEP 1
-                ================================================= -->
+                <!-- STEP 1 -->
 
-                <div
-                    class="step active"
-                    id="step1"
-                >
+                <div class="step active" id="step1">
 
                     <div class="step-title">
                         Choose Your Detail
@@ -2377,7 +2248,6 @@ footer {
 
 
                     <div class="package-select">
-
 
                         <button
                             type="button"
@@ -2466,7 +2336,6 @@ footer {
 
                         </button>
 
-
                     </div>
 
 
@@ -2487,14 +2356,9 @@ footer {
                 </div>
 
 
-                <!-- =================================================
-                     STEP 2
-                ================================================= -->
+                <!-- STEP 2 -->
 
-                <div
-                    class="step"
-                    id="step2"
-                >
+                <div class="step" id="step2">
 
                     <div class="step-title">
                         Vehicle Information
@@ -2506,7 +2370,6 @@ footer {
 
 
                     <div class="form-grid">
-
 
                         <div class="field">
 
@@ -2539,12 +2402,10 @@ footer {
 
                         </div>
 
-
                     </div>
 
 
                     <div class="form-grid">
-
 
                         <div class="field">
 
@@ -2589,7 +2450,6 @@ footer {
 
                         </div>
 
-
                     </div>
 
 
@@ -2617,7 +2477,6 @@ footer {
                             ← Back
                         </button>
 
-
                         <button
                             type="button"
                             class="btn primary"
@@ -2631,14 +2490,9 @@ footer {
                 </div>
 
 
-                <!-- =================================================
-                     STEP 3
-                ================================================= -->
+                <!-- STEP 3 -->
 
-                <div
-                    class="step"
-                    id="step3"
-                >
+                <div class="step" id="step3">
 
                     <div class="step-title">
                         Preferred Date
@@ -2650,7 +2504,6 @@ footer {
 
 
                     <div class="form-grid">
-
 
                         <div class="field">
 
@@ -2674,26 +2527,14 @@ footer {
 
                             <select id="time">
 
-                                <option>
-                                    Morning
-                                </option>
-
-                                <option>
-                                    Midday
-                                </option>
-
-                                <option>
-                                    Afternoon
-                                </option>
-
-                                <option>
-                                    Evening
-                                </option>
+                                <option>Morning</option>
+                                <option>Midday</option>
+                                <option>Afternoon</option>
+                                <option>Evening</option>
 
                             </select>
 
                         </div>
-
 
                     </div>
 
@@ -2738,7 +2579,6 @@ footer {
                             ← Back
                         </button>
 
-
                         <button
                             type="button"
                             class="btn primary"
@@ -2752,14 +2592,9 @@ footer {
                 </div>
 
 
-                <!-- =================================================
-                     STEP 4
-                ================================================= -->
+                <!-- STEP 4 -->
 
-                <div
-                    class="step"
-                    id="step4"
-                >
+                <div class="step" id="step4">
 
                     <div class="step-title">
                         Review Your Request
@@ -2771,7 +2606,6 @@ footer {
 
 
                     <div class="summary">
-
 
                         <div class="summary-row">
 
@@ -2837,7 +2671,6 @@ footer {
 
                         </div>
 
-
                     </div>
 
 
@@ -2851,7 +2684,6 @@ footer {
                             ← Back
                         </button>
 
-
                         <button
                             type="button"
                             class="btn primary"
@@ -2863,7 +2695,6 @@ footer {
                     </div>
 
                 </div>
-
 
             </div>
 
@@ -2882,7 +2713,6 @@ footer {
 
     <div class="container">
 
-
         <div class="section-header">
 
             <div class="eyebrow">
@@ -2898,7 +2728,6 @@ footer {
 
 
         <div class="faq">
-
 
             <details>
 
@@ -2970,7 +2799,6 @@ footer {
 
             </details>
 
-
         </div>
 
     </div>
@@ -2985,7 +2813,6 @@ footer {
 <footer>
 
     <div class="footer">
-
 
         <div>
 
@@ -3012,7 +2839,6 @@ footer {
             Cartersville • White • Canton • Rome
 
         </div>
-
 
     </div>
 
@@ -3050,8 +2876,6 @@ menuToggle.addEventListener("click", function() {
 });
 
 
-/* CLOSE MOBILE MENU AFTER CLICKING A LINK */
-
 document
     .querySelectorAll(".mobile-menu a")
     .forEach(link => {
@@ -3085,7 +2909,7 @@ let selectedPrice = 95;
 
 
 /* =========================================================
-   SERVICE SELECTION
+   PACKAGE SELECTION
 ========================================================= */
 
 document
@@ -3119,9 +2943,6 @@ document
 
 function nextStep() {
 
-
-    /* STEP 2 VALIDATION */
-
     if(currentStep === 2) {
 
         const name =
@@ -3150,8 +2971,6 @@ function nextStep() {
 
     }
 
-
-    /* STEP 3 VALIDATION */
 
     if(currentStep === 3) {
 
@@ -3212,7 +3031,6 @@ function previousStep() {
 
 function updateSteps() {
 
-
     document
         .querySelectorAll(".step")
         .forEach(step => {
@@ -3244,8 +3062,6 @@ function updateSteps() {
     updateSummary();
 
 
-    /* Scroll booking card to top on mobile */
-
     if(window.innerWidth <= 700) {
 
         document
@@ -3265,7 +3081,6 @@ function updateSteps() {
 ========================================================= */
 
 function updateSummary() {
-
 
     document.getElementById(
         "summaryService"
@@ -3327,7 +3142,6 @@ function updateSummary() {
 
 function submitBooking() {
 
-
     const name =
         document.getElementById("name").value;
 
@@ -3387,11 +3201,6 @@ ${finalNotes || "None"}
 Please confirm availability and final pricing.`;
 
 
-    /*
-        Opens the customer's messaging app
-        with the booking request prepared.
-    */
-
     window.location.href =
         "sms:4703343089?body=" +
         encodeURIComponent(message);
@@ -3418,7 +3227,6 @@ document.getElementById("date").min =
     today.toISOString().split("T")[0];
 
 </script>
-
 
 </body>
 </html>
