@@ -248,10 +248,12 @@ section{padding:70px 20px}.packages{grid-template-columns:1fr}.form-grid{grid-te
 <div class="field"><label for="phone">Phone</label><input id="phone" type="tel" placeholder="470-555-5555"></div>
 </div>
 <div class="form-grid">
-<div class="field"><label for="vehicle">Vehicle</label><input id="vehicle" placeholder="2024 BMW M4"></div>
+<div class="field"><label for="make">Vehicle Make</label>
+<select id="make"><option>BMW</option><option>Porsche</option><option>Maybach</option><option>Other</option></select></div>
 <div class="field"><label for="size">Vehicle Size</label>
 <select id="size"><option>Sedan / Coupe</option><option>Small SUV / Crossover</option><option>Large SUV / Truck</option><option>3-Row SUV</option></select></div>
 </div>
+<div class="field"><label for="vehicle">Year / Model</label><input id="vehicle" placeholder="2024 M4"></div>
 <div class="field"><label for="notes">Vehicle Condition / Notes</label><textarea id="notes" placeholder="Pet hair, stains, mud, heavy dirt, etc."></textarea></div>
 <div class="step-buttons">
 <button type="button" class="btn outline" onclick="previousStep()">← Back</button>
@@ -392,7 +394,7 @@ function updateSummary() {
     byId("summaryPrice").textContent = "$" + selectedPrice + "+";
     byId("summaryName").textContent = byId("name").value.trim() || "—";
     byId("summaryPhone").textContent = byId("phone").value.trim() || "—";
-    byId("summaryVehicle").textContent = byId("vehicle").value.trim() || "—";
+    byId("summaryVehicle").textContent = byId("vehicle").value.trim() ? byId("make").value + " " + byId("vehicle").value.trim() : "—";
     byId("summaryDate").textContent = prettyDate(byId("date").value);
     byId("summaryTime").textContent = byId("time").value || "—";
     byId("summaryLocation").textContent = byId("location").value.trim() || "—";
@@ -410,6 +412,7 @@ function submitBooking() {
 
     const name = getValue("name");
     const phone = getValue("phone");
+    const make = getValue("make");
     const vehicle = getValue("vehicle");
     const size = getValue("size");
     const date = getValue("date");
@@ -428,7 +431,7 @@ function submitBooking() {
 
 Name: ${name}
 Phone: ${phone}
-Vehicle: ${vehicle} (${size || "Not specified"})
+Vehicle: ${make} ${vehicle} (${size || "Not specified"})
 Service: ${selectedService} - $${selectedPrice}+
 Date: ${prettyDate(date)}
 Time: ${time || "Flexible"}
